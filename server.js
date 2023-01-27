@@ -6,11 +6,15 @@ const cors = require("cors");
 const app = express();
 const House = require("./model");
 require("dotenv").config();
+
+const MONGO_URI = "mongodb+srv://admin:admin123@cluster0.qlms6sd.mongodb.net/?retryWrites=true&w=majority" || process.env.MONGO_URI
+const PORT = 3000 || process.env.PORT
+
 // allow cross-origin requests
 app.use(cors());
 
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -43,6 +47,6 @@ app.use(
   })
 );
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
