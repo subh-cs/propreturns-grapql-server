@@ -22,7 +22,7 @@ mongoose
   .catch((err) => console.log("error connecting to MongoDB:", err));
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.json({message:"Hello World!"})
 });
 
 app.get("/add", async (req, res) => {
